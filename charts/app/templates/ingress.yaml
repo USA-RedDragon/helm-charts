@@ -31,7 +31,7 @@ spec:
             port:
               number: {{ .port }}
         pathType: {{ .pathType | default "Prefix" }}
-        {{- else -}}
+        {{- else }}
           serviceName: {{ $fullName }}
           servicePort: {{ .port }}
         {{- end }}
