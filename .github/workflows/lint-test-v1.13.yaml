@@ -1,4 +1,4 @@
-name: Lint and Test Charts
+name: Lint and Test Charts for k8s v1.13
 
 on: pull_request
 
@@ -37,27 +37,11 @@ jobs:
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml
 
-      - name: Create kind cluster (latest)
-        uses: helm/kind-action@v1.1.0
-        if: steps.list-changed.outputs.changed == 'true'
-
-      - name: Run chart-testing (install)
-        run: ct install --config ct.yaml
-
-      - name: Create kind cluster (1.16.15)
-        uses: helm/kind-action@v1.1.0
-        with:
-          node_image: kindest/node:v1.16.15
-        if: steps.list-changed.outputs.changed == 'true'
-
-      - name: Run chart-testing (install 1.16.15)
-        run: ct install --config ct.yaml
-
-      - name: Create kind cluster (1.13.12)
+      - name: Create kind cluster
         uses: helm/kind-action@v1.1.0
         with:
           node_image: kindest/node:v1.13.12
         if: steps.list-changed.outputs.changed == 'true'
 
-      - name: Run chart-testing (install 1.13.12)
+      - name: Run chart-testing (install)
         run: ct install --config ct.yaml
