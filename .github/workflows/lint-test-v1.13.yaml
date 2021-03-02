@@ -1,10 +1,10 @@
-name: Lint and Test Charts
+name: Lint and Test Charts for k8s v1.13
 
 on: pull_request
 
 jobs:
   lint-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -39,6 +39,8 @@ jobs:
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.1.0
+        with:
+          node_image: kindest/node:v1.13.12
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)

@@ -1,6 +1,6 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "app.fullname" . -}}
-{{- if semverCompare ">=1.16-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1
 {{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
@@ -25,9 +25,16 @@ spec:
       {{- range .paths }}
       - path: {{ .path }}
         backend:
+        {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ .port }}
+        pathType: {{ .pathType | default "Prefix" }}
+        {{- else }}
           serviceName: {{ $fullName }}
           servicePort: {{ .port }}
-        pathType: {{ .pathType }}
+        {{- end }}
       {{- end }}
   {{- end }}
   {{- if .Values.ingress.tls }}
