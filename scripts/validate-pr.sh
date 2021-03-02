@@ -27,11 +27,6 @@ main() {
 
     # Strip charts directory
     changed="${changed##*/}"
-
-    if [[ "$PR_TITLE" != "[$changed] "* ]]; then
-        echo "PR title must start with '[$changed] '." >&2
-        exit 1
-    fi
 }
 
 main
