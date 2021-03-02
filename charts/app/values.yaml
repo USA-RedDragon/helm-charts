@@ -14,6 +14,54 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+secrets: []
+# - name: app-creds
+#   data:
+#     API_KEY: 'asdfgh123456'
+#     SMTP_PASSWORD: '123456asdfgh'
+# - name: app-secret-key
+#   data:
+#     SECRET_KEY: ashdfsfa
+# - name: app-keyfile
+#   data:
+#     keyfile.txt: |
+#       using
+#       multiline
+#       strings
+
+configs: []
+# - name: app-config
+#   data:
+#     TEST_ENV: alive
+# - name: app-otherenv
+#   data:
+#     SPECIAL_KEY: here
+# - name: app-configfile
+#   data:
+#     test.ini: |
+#       [test]
+#       value=1
+
+envFrom: []
+# - secretRef:
+#     name: app-creds
+# - configMapRef:
+#     name: app-config
+
+env: []
+# - name: APP_DEBUG
+#   value: "true"
+# - name: SPECIAL_KEY
+#   valueFrom:
+#     configMapKeyRef:
+#       name: app-otherenv
+#       key: SPECIAL_KEY
+# - name: SECRET_KEY
+#   valueFrom:
+#     secretKeyRef:
+#       name: app-secret-key
+#       key: SECRET_KEY
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -35,10 +83,23 @@ service:
 
 persistentVolumes: []
 # - name: data
-#   size: 5Gi
-#   persistentVolumeClaim: app-data
 #   mountPath: /data
-#   storageClass: mayastor-nvmf
+#   size: 5Gi
+#   persistentVolumeClaim:
+#     name: app-data
+#     storageClass: mayastor-nvmf
+# - name: config
+#   mountPath: /config
+#   configMap:
+#     name: app-configfile
+#     items:
+#     - key: test.ini
+#       path: config.ini
+# - name: keys
+#   mountPath: /keys
+#   readOnly: true
+#   secret:
+#     secretName: app-keyfile
 
 ingress:
   enabled: true
