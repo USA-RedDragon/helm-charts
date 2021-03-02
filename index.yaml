@@ -3,6 +3,16 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-03-02T02:52:19.501814365Z"
+    description: A helm chart for a generic Docker app
+    digest: e8b4824724aa4dcc7d9c3bc2575044bbd0d85def10461d8c5698005aef5a343f
+    name: app
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/app-0.1.2/app-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-03-02T02:34:14.748160414Z"
     description: A helm chart for a generic Docker app
     digest: fe012b40bf9f7a213af72ed9f572326865bfaee889246a066f67e105288b97a1
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://usa-reddragon.github.io/helm-charts/packages/app-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-02T02:34:14.748168015Z"
+generated: "2021-03-02T02:52:19.501825865Z"
