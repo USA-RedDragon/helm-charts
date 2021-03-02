@@ -43,7 +43,9 @@ spec:
         secret:
           {{- toYaml . | nindent 10 }}
         {{- end }}
-        readOnly: {{ .readOnly | default false }}
+        {{- with .readOnly }}
+        readOnly: {{ . | default false }}
+        {{- end }}
         {{- end }}
       {{- end }}
       securityContext:
