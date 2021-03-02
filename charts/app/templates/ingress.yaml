@@ -25,7 +25,7 @@ spec:
       {{- range .paths }}
       - path: {{ .path }}
         backend:
-        {{- if semverCompare ">=1.16-0" $.Capabilities.KubeVersion.GitVersion -}}
+        {{- if semverCompare ">=1.16-0" $.Capabilities.KubeVersion.GitVersion }}
           service:
             name: {{ $fullName }}
             port:
