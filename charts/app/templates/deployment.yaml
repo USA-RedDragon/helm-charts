@@ -43,9 +43,6 @@ spec:
         secret:
           {{- toYaml . | nindent 10 }}
         {{- end }}
-        {{- with .readOnly }}
-        readOnly: {{ . | default false }}
-        {{- end }}
         {{- end }}
       {{- end }}
       securityContext:
@@ -87,6 +84,9 @@ spec:
           {{- range . }}
         - name: {{ .name }}
           mountPath: {{ .mountPath }}
+          {{- with .readOnly }}
+          readOnly: {{ . | default false }}
+          {{- end }}
           {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
