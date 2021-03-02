@@ -4,6 +4,9 @@ metadata:
   labels:
     {{- include "app.labels" . | nindent 4 }}
   name: {{ include "app.fullname" . }}
+  annotations:
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -30,8 +33,17 @@ spec:
       - name: {{ .name }}
         {{- with .persistentVolumeClaim }}
         persistentVolumeClaim:
-          claimName: {{ . }}
+          claimName: {{ .name }}
         {{- end }}
+        {{- with .configMap }}
+        configMap:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .secret }}
+        secret:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        readOnly: {{ .readOnly | default false }}
         {{- end }}
       {{- end }}
       securityContext:
@@ -40,6 +52,14 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- with .Values.envFrom }}
+        envFrom:
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- with .Values.env }}
+        env:
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{- with .Values.service.ports }}
         ports:
           {{- range . }}
