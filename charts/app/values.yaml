@@ -149,3 +149,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+lifecycle: {}
+  # postStart:
+  #   exec:
+  #     command:
+  #       - /bin/sh
+  #       - -c
+  #       - cp /tmp/file /var/app/file
