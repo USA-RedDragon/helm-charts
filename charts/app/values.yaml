@@ -122,15 +122,15 @@ ingress:
     hosts:
       - example.mcswain.dev
 
-probes:
-  liveness:
-    httpGet:
-      path: /
-      port: http
-  readiness:
-    httpGet:
-      path: /
-      port: http
+probes: {}
+  # liveness:
+  #   httpGet:
+  #     path: /
+  #     port: http
+  # readiness:
+  #   httpGet:
+  #     path: /
+  #     port: http
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
