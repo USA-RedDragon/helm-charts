@@ -84,6 +84,7 @@ service:
 persistentVolumes: []
 # - name: data
 #   mountPath: /data
+#   subPath: test
 #   size: 5Gi
 #   persistentVolumeClaim:
 #     name: app-data
