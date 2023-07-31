@@ -94,6 +94,9 @@ spec:
           {{- with .readOnly }}
           readOnly: {{ . | default false }}
           {{- end }}
+          {{- with .subPath }}
+          subPath: {{ . | default "" }}
+          {{- end }}
           {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
