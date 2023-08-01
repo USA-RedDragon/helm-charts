@@ -13,10 +13,14 @@ spec:
     type: Recreate
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if .Values.configs -}}
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- end }}
+      {{- if .Values.secrets -}}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       {{- end }}
       labels:
