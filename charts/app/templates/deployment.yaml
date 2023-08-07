@@ -17,11 +17,11 @@ spec:
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
-      {{- if .Values.configs -}}
-        checksum/config: {{ include ("app.configmap") . | sha256sum }}
+      {{- if .Values.configs }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       {{- end }}
-      {{- if .Values.secrets -}}
-        checksum/secret: {{ include ("app.secret") . | sha256sum }}
+      {{- if .Values.secrets }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       {{- end }}
       labels:
         {{- include "app.selectorLabels" . | nindent 8 }}
