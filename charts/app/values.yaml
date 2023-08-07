@@ -102,6 +102,11 @@ persistentVolumes: []
 #   readOnly: true
 #   secret:
 #     secretName: app-keyfile
+# - name: nfs
+#   mountPath: /data
+#   nfs:
+#     server: your.server.ip
+#     path: /path/to/dir
 
 ingress:
   enabled: true
