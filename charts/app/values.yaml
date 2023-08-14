@@ -82,6 +82,9 @@ service:
   ports:
   - name: http
     port: 80
+  # annotations:
+  #   metallb.universe.tf/loadBalancerIPs: 192.168.1.234
+  # externalTrafficPolicy: Cluster
 
 persistentVolumes: []
 # - name: data

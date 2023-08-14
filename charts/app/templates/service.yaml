@@ -5,6 +5,10 @@ metadata:
   name: {{ include "app.fullname" . }}
   labels:
     {{- include "app.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,6 +19,9 @@ spec:
     targetPort: {{ .targetPort | default .port }}
     protocol: {{ .protocol | default "TCP" }}
   {{- end }}
+  {{- end }}
+  {{- if .Values.service.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
   selector:
     {{- include "app.selectorLabels" . | nindent 4 }}
