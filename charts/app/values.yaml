@@ -112,6 +112,8 @@ persistentVolumes: []
 #     server: your.server.ip
 #     path: /path/to/dir
 
+extraVolumes: []
+
 ingress:
   enabled: true
   annotations: {}
