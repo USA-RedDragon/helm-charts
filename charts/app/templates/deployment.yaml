@@ -54,7 +54,7 @@ spec:
         {{- end }}
       {{- end }}
       {{- with .Values.extraVolumes }}
-        {{- toYaml . | nindent 8 }}
+      {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- end }}
       securityContext:
