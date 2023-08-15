@@ -30,7 +30,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{ - if or .Values.persistentVolumes .Values.extraVolumes }}
+      {{- if or .Values.persistentVolumes .Values.extraVolumes }}
       volumes:
       {{- with .Values.persistentVolumes }}
         {{- range . }}
