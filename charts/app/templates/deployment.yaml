@@ -9,8 +9,9 @@ spec:
   selector:
     matchLabels:
       {{- include "app.selectorLabels" . | nindent 6 }}
-  strategy:
-    type: Recreate
+  {{- with .Values.deploymentStrategy }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   template:
     metadata:
       annotations:
