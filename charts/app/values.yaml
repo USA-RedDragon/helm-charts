@@ -77,6 +77,9 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+deploymentStrategy:
+  type: Recreate
+
 service:
   type: ClusterIP
   ports:
