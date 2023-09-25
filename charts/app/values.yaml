@@ -89,6 +89,10 @@ service:
   # annotations:
   #   metallb.universe.tf/loadBalancerIPs: 192.168.1.234
   # externalTrafficPolicy: Cluster
+  # sessionAffinity: ClientIP
+  # sessionAffinityConfig:
+  #  clientIP:
+  #    timeoutSeconds: 120
 
 persistentVolumes: []
 # - name: data
