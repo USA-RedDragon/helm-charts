@@ -1,12 +1,9 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "app.fullname" . -}}
-{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
-apiVersion: networking.k8s.io/v1
-{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
-apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
-apiVersion: extensions/v1beta1
-{{- end }}
+{{- $pathType := .Values.ingress.pathType | default "Prefix" -}}
+{{- $apiIsStable := eq (include "app.ingress.isStable" .) "true" -}}
+{{- $ingressSupportsPathType := eq (include "app.ingress.supportsPathType" .) "true" -}}
+apiVersion: {{ include "app.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}
@@ -17,25 +14,34 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if $apiIsStable }}
+  {{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  {{- end }}
+  {{- end }}
   rules:
+  {{- if .Values.ingress.hosts }}
   {{- range .Values.ingress.hosts }}
   - host: {{ .host | quote }}
     http:
       paths:
       {{- range .paths }}
       - path: {{ .path }}
+        {{- if and $pathType $ingressSupportsPathType }}
+        pathType: {{ $pathType }}
+        {{- end }}
         backend:
-        {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
+        {{- if $apiIsStable }}
           service:
             name: {{ $fullName }}
             port:
               number: {{ .port }}
-        pathType: {{ .pathType | default "Prefix" }}
         {{- else }}
           serviceName: {{ $fullName }}
           servicePort: {{ .port }}
         {{- end }}
       {{- end }}
+  {{- end }}
   {{- end }}
   {{- if .Values.ingress.tls }}
   tls:
