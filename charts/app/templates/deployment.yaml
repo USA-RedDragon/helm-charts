@@ -28,6 +28,9 @@ spec:
       labels:
         {{- include "app.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.hostname }}
+      hostname: {{ . }}
+      {{- end }}
       {{- with .Values.serviceAccountName }}
       serviceAccountName: {{ . }}
       {{- end }}
