@@ -87,7 +87,7 @@ jobs:
             git add README.md
             git commit -m "Automatic README update"
             git pull --rebase
-            git push
+            git push -f
           fi
 
       - name: Set up Python
