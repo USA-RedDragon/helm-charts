@@ -131,7 +131,7 @@ jobs:
           labels: automatic
 
       - name: Automerge README PR
-        if: steps.commit.outputs.UPDATED_README == 'true' && (steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated')
+        if: steps.commit.outputs.UPDATED_README == 'true'
         run: gh pr merge --rebase --auto "$PR_NUMBER"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
