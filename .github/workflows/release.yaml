@@ -57,6 +57,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Golang
+        uses: actions/setup-go@v4
+
+      - name: Install Helm-docs
+        run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
+
+      - name: Install yq
+        run: |
+          mkdir -p ~/.local/bin
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O ~/.local/bin/yq
+          chmod +x ~/.local/bin/yq
+          echo "~/.local/bin/yq" >> $GITHUB_PATH
+
       - name: Generate READMEs
         run: ./scripts/gen-helm-docs.sh
 
