@@ -1,6 +1,6 @@
 apiVersion: v2
 name: app
-description: A helm chart for a generic Docker app
+description: A Helm chart for a generic Docker app
 
 # A chart can be either an 'application' or a 'library' chart.
 #
