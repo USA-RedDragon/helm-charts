@@ -1,5 +1,8 @@
 # Kubernetes Helm Charts
 
+[![Release](https://github.com/USA-RedDragon/helm-charts/actions/workflows/release.yaml/badge.svg)](https://github.com/USA-RedDragon/helm-charts/actions/workflows/release.yaml)
+[![Renovate](https://img.shields.io/badge/Renovate-enabled-brightgreen?logo=renovatebot&logoColor=1DDEDD)](https://renovatebot.com)
+
 The code is provided as-is with no warranties.
 
 ## Usage
