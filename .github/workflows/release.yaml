@@ -61,8 +61,8 @@ jobs:
             if [ -z "${pkg:-}" ]; then
               break
             fi
-            echo "Pushing $pkg..."
-            helm push "$pkg" "oci://ghcr.io/$GITHUB_REPOSITORY_OWNER/helm-charts"
+            echo "Pushing $pkg to ghcr.io/${{ github.repository }}"
+            helm push "$pkg" "oci://ghcr.io/${{ github.repository }}"
           done
 
       - name: Publish charts
