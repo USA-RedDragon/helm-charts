@@ -54,10 +54,6 @@ jobs:
 
   docs:
     runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -120,6 +116,10 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     needs: [release, docs]
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
