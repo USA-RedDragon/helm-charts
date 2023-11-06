@@ -106,15 +106,20 @@ jobs:
         id: commit
         run: |
           if [[ -n $(git status --porcelain README.md) ]]; then
-            git config user.name "$GITHUB_ACTOR"
-            git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            echo '#!/bin/sh' >> ~/.git-askpass
+            echo "exec echo \"$GITHUB_TOKEN\"" >> ~/.git-askpass
+            git config user.name "$OWNER"
+            git config user.email "$OWNER@users.noreply.github.com"
             git add README.md
             git commit -m "Automatic README update"
-            git push -f origin HEAD:readme-update
+            GIT_ASKPASS=~/.git-askpass git push -f origin HEAD:readme-update
             echo "UPDATED_README=true" >> $GITHUB_OUTPUT
           else
             echo "UPDATED_README=false" >> $GITHUB_OUTPUT
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          OWNER: ${{ github.repository_owner }}
 
       - name: Create PR for README changes
         if: steps.commit.outputs.UPDATED_README == 'true'
