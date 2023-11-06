@@ -3,6 +3,16 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-11-06T04:13:21.174167941Z"
+    description: A helm chart for a generic Docker app
+    digest: 4e247205c983a3fa49dc291aea03dd84a90a785b023a332a2f6f73c1fdf4d94c
+    name: app
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/app-0.1.30/app-0.1.30.tgz
+    version: 0.1.30
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-11-06T02:43:38.756791937Z"
     description: A helm chart for a generic Docker app
     digest: d9be12662cec1680278bfe245070f3c3626e1b17ecf9aa6b099e0bdd85edea63
@@ -301,4 +311,16 @@ entries:
     urls:
     - https://usa-reddragon.github.io/helm-charts/packages/app-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-06T02:43:38.757113276Z"
+  pgo:
+  - apiVersion: v2
+    appVersion: 5.4.3
+    created: "2023-11-06T04:13:21.407356755Z"
+    description: Installer for PGO, the open source Postgres Operator from Crunchy
+      Data
+    digest: 343e0155b6c794aa602971d78f3cb8b3ed76966567224691c3d283b3167bc86e
+    name: pgo
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
+    version: 5.4.3
+generated: "2023-11-06T04:13:21.407718276Z"
