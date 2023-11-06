@@ -21,7 +21,7 @@ repository="$(git rev-parse --show-toplevel)"
 charts_folder="$repository/charts"
 
 # Templates to copy into each chart directory
-template_dir="$repository/hack/templates"
+template_dir="$repository/docs/templates"
 readme_config_template="$template_dir/README_CONFIG.md.gotmpl"
 icon_template=$(<"$template_dir/icon.gotmpl")
 
