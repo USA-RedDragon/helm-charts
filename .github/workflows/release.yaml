@@ -54,6 +54,9 @@ jobs:
 
   docs:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
