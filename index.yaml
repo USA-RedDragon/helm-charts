@@ -314,6 +314,17 @@ entries:
   pgo:
   - apiVersion: v2
     appVersion: 5.4.3
+    created: "2023-11-06T06:30:51.303537266Z"
+    description: Installer for PGO, the open source Postgres Operator from Crunchy
+      Data
+    digest: 2192f63d829c90ec0da0a71bea270a61830bc1c5e3dca6d9903ad4ac9e089e29
+    name: pgo
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.4/pgo-5.4.4.tgz
+    version: 5.4.4
+  - apiVersion: v2
+    appVersion: 5.4.3
     created: "2023-11-06T04:13:21.407356755Z"
     description: Installer for PGO, the open source Postgres Operator from Crunchy
       Data
@@ -323,4 +334,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2023-11-06T04:13:21.407718276Z"
+generated: "2023-11-06T06:30:51.303602938Z"
