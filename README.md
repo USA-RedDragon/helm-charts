@@ -22,3 +22,4 @@ You can then run `helm search repo usa-reddragon` to see the charts.
 
 | Chart | Description |
 | ----- | ----------- |
+| [Generic App ](charts/app/) | A helm chart for a generic Docker app |
