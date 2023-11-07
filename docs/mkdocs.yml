@@ -2,7 +2,7 @@ site_name: USA-RedDragon Helm Charts
 site_url: https://charts.mcswain.dev
 site_author: USA-RedDragon
 site_description: >-
-  A collection of Helm charts, based on the bjw-s common library chart.
+  My library of Helm charts
 
 repo_name: !ENV [REPO_NAME, "USA-RedDragon/helm-charts"]
 repo_url: !ENV [REPO_URL, "https://github.com/USA-RedDragon/helm-charts"]
