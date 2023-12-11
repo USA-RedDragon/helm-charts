@@ -84,7 +84,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Golang
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
 
       - name: Install Helm-docs
         run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
