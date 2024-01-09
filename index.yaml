@@ -311,6 +311,39 @@ entries:
     urls:
     - https://usa-reddragon.github.io/helm-charts/packages/app-0.1.0.tgz
     version: 0.1.0
+  longhorn:
+  - apiVersion: v1
+    appVersion: v1.6.0-dev-20240105
+    created: "2024-01-09T17:12:06.507558625Z"
+    description: Longhorn is a distributed block storage system for Kubernetes.
+    digest: 9ae8152a6775bc700803f736424d813faefc961e5879ee2f4a7dbce2fbbb9194
+    home: https://github.com/longhorn/longhorn
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/longhorn/icon/color/longhorn-icon-color.png
+    keywords:
+    - longhorn
+    - storage
+    - distributed
+    - block
+    - device
+    - iscsi
+    - nfs
+    kubeVersion: '>=1.21.0-0'
+    maintainers:
+    - email: maintainers@longhorn.io
+      name: Longhorn maintainers
+    name: longhorn
+    sources:
+    - https://github.com/longhorn/longhorn
+    - https://github.com/longhorn/longhorn-engine
+    - https://github.com/longhorn/longhorn-instance-manager
+    - https://github.com/longhorn/longhorn-share-manager
+    - https://github.com/longhorn/longhorn-manager
+    - https://github.com/longhorn/longhorn-ui
+    - https://github.com/longhorn/longhorn-tests
+    - https://github.com/longhorn/backing-image-manager
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/longhorn-1.6.0-dev-20240105/longhorn-1.6.0-dev-20240105.tgz
+    version: 1.6.0-dev-20240105
   pgo:
   - apiVersion: v2
     appVersion: 5.4.3
@@ -334,4 +367,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2023-11-06T06:30:51.303602938Z"
+generated: "2024-01-09T17:12:06.507622032Z"
