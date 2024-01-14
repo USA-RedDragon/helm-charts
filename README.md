@@ -23,4 +23,4 @@ You can then run `helm search repo usa-reddragon` to see the charts.
 | Chart | Description |
 | ----- | ----------- |
 | [Generic App ](charts/app/) | A Helm chart for a generic Docker app |
-| [Longhorn v1.6.0-dev-20240105 <img src='https://raw.githubusercontent.com/cncf/artwork/master/projects/longhorn/icon/color/longhorn-icon-color.png' alt='longhorn icon' width='18px' align='right' loading='lazy'>](charts/longhorn/) | Longhorn is a distributed block storage system for Kubernetes. |
+| [Longhorn v1.6.0-rc1 <img src='https://raw.githubusercontent.com/cncf/artwork/master/projects/longhorn/icon/color/longhorn-icon-color.png' alt='longhorn icon' width='18px' align='right' loading='lazy'>](charts/longhorn/) | Longhorn is a distributed block storage system for Kubernetes. |
