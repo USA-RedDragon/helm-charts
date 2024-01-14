@@ -1328,6 +1328,8 @@ spec:
                 type: integer
               gitCommit:
                 type: string
+              incompatible:
+                type: boolean
               noRefSince:
                 type: string
               nodeDeploymentMap:
@@ -2807,6 +2809,7 @@ spec:
           metadata:
             type: object
           value:
+            description: The value of the setting.
             type: string
         required:
         - value
