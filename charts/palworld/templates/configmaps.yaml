@@ -59,9 +59,6 @@ data:
     exec_rcon_cmd "Broadcast Saving_Server_Data..."
     exec_rcon_cmd save
     sleep 30
-    exec_rcon_cmd "Broadcast Backing_up_Server_Data..."
-    backup
-    sleep 30
 
     step=5
     for i in $(seq 30 -$step 1); do
