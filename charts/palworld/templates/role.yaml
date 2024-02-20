@@ -5,17 +5,16 @@ metadata:
     name: "{{ .Values.server.config.daily_reboot.role }}"
     namespace: {{ .Release.Namespace }}
 rules:
-  {{- if .Values.server.config.rcon.enable }}
-    - apiGroups: ["apps", "extensions"]
-      resources: ["deployments", "pods"]
-      verbs: ["get", "patch", "list", "watch"]
-    - apiGroups:  [""]
-      resources:  ["pods/exec", "pods"]
-      verbs:  ["get", "list", "create"]
-  {{- else }}
     - apiGroups: ["apps"]
       resources: ["deployments"]
       resourceNames: ["{{ .Release.Name }}-server"]
       verbs: ["get", "patch"]
+  {{- if .Values.server.config.rcon.enable }}
+    - apiGroups: [""]
+      resources: ["pods"]
+      verbs: ["get", "list"]
+    - apiGroups:  [""]
+      resources:  ["pods/exec"]
+      verbs:  ["create"]
   {{- end }}
 {{ end }}
