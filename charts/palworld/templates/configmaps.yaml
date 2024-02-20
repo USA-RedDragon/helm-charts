@@ -49,6 +49,7 @@ data:
   {{- if and .Values.server.config.daily_reboot.enable }}
   restart-deployment.sh:  |
     #!/bin/bash
+    set -euo pipefail
   {{- if .Values.server.config.rcon.enable }}
     cont=$(kubectl -n {{ .Release.Namespace }} get pods -o=jsonpath='{.items[?(@.metadata.labels.app\.kubernetes\.io/name=="{{ .Release.Name }}-server")].metadata.name}')
     
@@ -59,7 +60,7 @@ data:
     exec_rcon_cmd save
     sleep 30
     exec_rcon_cmd "Broadcast Backing_up_Server_Data..."
-    exec_rcon_cmd backup
+    backup
     sleep 30
 
     step=5
