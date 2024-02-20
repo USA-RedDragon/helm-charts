@@ -61,9 +61,9 @@ data:
     sleep 30
 
     step=5
-    for i in $(seq 30 -$step 1); do
-      exec_rcon_cmd "Broadcast Rebooting_in_$i_seconds..."
-      sleep $step
+    for i in $(seq 30 -${step} 1); do
+      exec_rcon_cmd "Broadcast Rebooting_in_${i}_seconds..."
+      sleep ${step}
     done
 
     exec_rcon_cmd "Shutdown 1"
