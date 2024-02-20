@@ -52,6 +52,14 @@ server:
   #
   strategy: Recreate
 
+  # Container lifecycle
+  lifecycle:
+    preStop:
+      exec:
+        command:
+          - bash
+          - /usr/local/bin/backup
+
   # Liveness and readiness probes
   probes: {}
     # liveness:
