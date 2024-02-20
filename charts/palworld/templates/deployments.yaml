@@ -45,9 +45,8 @@ spec:
             preStop:
               exec:
                 command:
-                  - "sh"
-                  - "-c"
-                  - {{ .Values.server.config.rcon.enable | ternary "rcon-cli save" "echo" }} && bash /usr/local/bin/backup
+                  - bash
+                  - /usr/local/bin/backup
           resources:
             {{- with .Values.server.resources }}
               {{- toYaml . | nindent 12 }}
