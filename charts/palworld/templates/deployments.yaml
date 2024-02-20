@@ -47,11 +47,7 @@ spec:
                 command:
                   - "sh"
                   - "-c"
-                  {{- if .Values.server.config.rcon.enable }}
-                  - rcon-cli save && backup
-                  {{- else }}
-                  - backup
-                  {{- end }}
+                  - {{ .Values.server.config.rcon.enable | ternary "rcon-cli save" "echo" }} && bash /usr/local/bin/backup
           resources:
             {{- with .Values.server.resources }}
               {{- toYaml . | nindent 12 }}
