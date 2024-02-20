@@ -46,15 +46,15 @@ data:
   {{- with .Values.server.config.env }}
   {{- toYaml . | nindent 2  }}
   {{- end }}
-  {{ if .Values.server.config.daily_reboot.enable }}
+  {{- if and .Values.server.config.daily_reboot.enable }}
   restart-deployment.sh:  |
     #!/bin/bash
+  {{- if .Values.server.config.rcon.enable }}
     cont=$(kubectl -n {{ .Release.Namespace }} get pods -o=jsonpath='{.items[?(@.metadata.labels.app\.kubernetes\.io/name=="{{ .Release.Name }}-server")].metadata.name}')
     
     function exec_rcon_cmd() {
       kubectl exec -n {{ .Release.Namespace }} -i pod/$cont rcon-cli "$1"
     }
-    
     exec_rcon_cmd "Broadcast Saving_Server_Data..."
     exec_rcon_cmd save
     sleep 30
@@ -70,6 +70,7 @@ data:
 
     exec_rcon_cmd "Shutdown 1"
     sleep 30
+  {{ end }}
     kubectl -n {{ .Release.Namespace }} rollout restart deployment/{{ .Release.Name }}-server
   {{ end }}
   {{ end }}

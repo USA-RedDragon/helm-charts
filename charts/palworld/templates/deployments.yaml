@@ -47,7 +47,11 @@ spec:
                 command:
                   - "sh"
                   - "-c"
+                  {{- if .Values.server.config.rcon.enable }}
                   - rcon-cli save && backup
+                  {{- else }}
+                  - backup
+                  {{- end }}
           resources:
             {{- with .Values.server.resources }}
               {{- toYaml . | nindent 12 }}
@@ -65,6 +69,7 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           env:
+            {{- if .Values.server.config.rcon.enable }}
             - name: ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -75,6 +80,7 @@ spec:
                   name: "{{ .Values.server.config.rcon.externalPassword.name }}"
                   key: "{{ .Values.server.config.rcon.externalPassword.key }}"
                 {{- end }}
+            {{- end }}
             {{- if .Values.server.config.community.enable }}
             - name: SERVER_PASSWORD
               valueFrom:
