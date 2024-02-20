@@ -53,6 +53,7 @@ server:
   strategy: Recreate
 
   # Container lifecycle
+  terminationGracePeriodSeconds: 30
   lifecycle:
     preStop:
       exec:
