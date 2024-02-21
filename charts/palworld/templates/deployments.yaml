@@ -93,7 +93,7 @@ spec:
             - mountPath: /palworld
               name: datadir
             {{- if .Values.server.storage.backups }}
-            - mountPath: /backups
+            - mountPath: /palworld/backups
               name: backups
             {{- end }}
             {{- range $index, $element := .Values.server.storage.extra }}
