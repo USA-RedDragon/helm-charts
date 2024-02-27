@@ -238,11 +238,6 @@ server:
     public_port: ""
     server_description: ""
 
-    # Update or install the server when the container starts
-    # Must be enabled when the container first starts
-    #
-    update_on_boot: true
-
     # Daily reboot configuration, disabled by default
     #
     daily_reboot:
