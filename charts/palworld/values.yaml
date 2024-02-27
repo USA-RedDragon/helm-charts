@@ -32,7 +32,7 @@ server:
       #
       preventDelete: false
 
-      size: 12Gi
+      size: 1Gi
       storageClassName: ""
 
     # If not specified, the backups will be stored on the `main` storage
