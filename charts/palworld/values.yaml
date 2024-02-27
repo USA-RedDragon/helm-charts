@@ -154,7 +154,6 @@ server:
         - sh
         - -c
         - rcon-cli Info | grep -q "Welcome to Pal Server"
-      initialDelaySeconds: 10
 
   # Service configuration
   #
