@@ -411,6 +411,34 @@ entries:
   palworld:
   - apiVersion: v2
     appVersion: v0.26.0
+    created: "2024-02-27T22:42:48.126399118Z"
+    description: Helm chart for the palworld-server Docker image, deploys a dedicated
+      PalWorld server to your Kubernetes cluster!
+    digest: a65269323d2b7bb4ffb74bb4ca83712aa8041fdb63ef77f126d8fc0f25790616
+    home: https://charts.mcswain.dev/charts/palworld
+    icon: https://tech.palworldgame.com/img/logo.jpg
+    keywords:
+    - palworld
+    - server
+    - kubernetes
+    - helm
+    - game
+    - dedicated-server
+    - game-server
+    maintainers:
+    - email: palworld-server-docker@mcswain.dev
+      name: Jacob McSwain
+      url: https://github.com/USA-RedDragon
+    name: palworld
+    sources:
+    - https://github.com/USA-RedDragon/palworld-server-docker
+    - https://github.com/USA-RedDragon/palworld-server
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/palworld-1.0.3/palworld-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: v0.26.0
     created: "2024-02-27T22:30:07.72831772Z"
     description: Helm chart for the palworld-server Docker image, deploys a dedicated
       PalWorld server to your Kubernetes cluster!
@@ -560,4 +588,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2024-02-27T22:30:07.728416714Z"
+generated: "2024-02-27T22:42:48.126509003Z"
