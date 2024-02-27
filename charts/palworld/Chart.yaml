@@ -1,0 +1,40 @@
+apiVersion: v2
+name: palworld
+version: 0.26.20
+description: Official helm chart for the palworld-server-docker docker image, deploys a dedicated PalWorld server to your Kubernetes cluster!
+type: application
+keywords:
+- palworld
+- server
+- kubernetes
+- helm
+- game
+- dedicated-server
+- game-server
+home: https://github.com/twinki14/palworld-server-chart
+sources:
+- https://github.com/thijsvanloef/palworld-server-docker
+- https://github.com/twinki14/palworld-server-chart
+maintainers:
+- name: Filipe Souza
+  email: filipe.souza@mestre8d.com
+  url: https://github.com/Filipe-Souza
+- name: Twinki14
+  url: https://github.com/Twinki14
+icon: https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg
+appVersion: "v0.26.0"
+deprecated: false
+annotations:
+  artifacthub.io/alternativeName: palworld-server
+  artifacthub.io/license: MIT
+  artifacthub.io/links: |
+    - name: Chart source
+      url: https://github.com/twinki14/palworld-server-chart
+    - name: Docker image source
+      url: https://github.com/thijsvanloef/palworld-server-docker
+  artifacthub.io/images: |
+    - name: palworld-server-docker
+      image: thijsvanloef/palworld-server-docker:v0.26.0
+  artifacthub.io/screenshots: |
+    - title: PalWorld
+      url: https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg

@@ -2,10 +2,15 @@ name: Lint and Test Charts for k8s
 
 on: pull_request
 
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   lint-test:
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         # Supported versions at https://kubernetes.io/releases/
         version:
@@ -45,4 +50,18 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml
+        run: ct install --config ct.yaml --helm-extra-set-args='--set=server.resources=null'
+
+  lint-results:
+    if: always()
+    needs: [ lint-test ]
+    runs-on: ubuntu-22.04
+    steps:
+      - run: |
+          result="${{ needs.lint-test.result }}"
+          if [[ "$result" == "success" || "$result" == "skipped" ]]; then
+            echo "All charts passed linting and tests"
+          else
+            echo "One or more charts failed linting or tests" >&2
+            exit 1
+          fi
