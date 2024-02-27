@@ -50,7 +50,7 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml --helm-extra-set-args='--set=server.resources=null'
+        run: ct install --config ct.yaml --check-version-increment=false --helm-extra-set-args='--set=server.resources=null'
 
   lint-results:
     if: always()
