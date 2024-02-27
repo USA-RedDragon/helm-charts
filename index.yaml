@@ -409,6 +409,34 @@ entries:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/longhorn-1.6.0-dev-20240105/longhorn-1.6.0-dev-20240105.tgz
     version: 1.6.0-dev-20240105
   palworld:
+  - apiVersion: v2
+    appVersion: v0.26.0
+    created: "2024-02-27T21:55:52.193233612Z"
+    description: Helm chart for the palworld-server Docker image, deploys a dedicated
+      PalWorld server to your Kubernetes cluster!
+    digest: bffc7e5ddb194ed7816157d9c2791a4c0c3b06093a369888ea44b7664b3b9b35
+    home: https://charts.mcswain.dev/charts/palworld
+    icon: https://tech.palworldgame.com/img/logo.jpg
+    keywords:
+    - palworld
+    - server
+    - kubernetes
+    - helm
+    - game
+    - dedicated-server
+    - game-server
+    maintainers:
+    - email: palworld-server-docker@mcswain.dev
+      name: Jacob McSwain
+      url: https://github.com/USA-RedDragon
+    name: palworld
+    sources:
+    - https://github.com/USA-RedDragon/palworld-server-docker
+    - https://github.com/USA-RedDragon/palworld-server
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/palworld-1.0.0/palworld-1.0.0.tgz
+    version: 1.0.0
   - annotations:
       artifacthub.io/alternativeName: palworld-server
       artifacthub.io/images: |
@@ -476,4 +504,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2024-02-27T21:40:52.763843845Z"
+generated: "2024-02-27T21:55:52.193338979Z"
