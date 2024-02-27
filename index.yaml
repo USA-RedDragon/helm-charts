@@ -408,6 +408,51 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/longhorn-1.6.0-dev-20240105/longhorn-1.6.0-dev-20240105.tgz
     version: 1.6.0-dev-20240105
+  palworld:
+  - annotations:
+      artifacthub.io/alternativeName: palworld-server
+      artifacthub.io/images: |
+        - name: palworld-server-docker
+          image: thijsvanloef/palworld-server-docker:v0.26.0
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Chart source
+          url: https://github.com/twinki14/palworld-server-chart
+        - name: Docker image source
+          url: https://github.com/thijsvanloef/palworld-server-docker
+      artifacthub.io/screenshots: |
+        - title: PalWorld
+          url: https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg
+    apiVersion: v2
+    appVersion: v0.26.0
+    created: "2024-02-27T21:40:52.763747586Z"
+    description: Official helm chart for the palworld-server-docker docker image,
+      deploys a dedicated PalWorld server to your Kubernetes cluster!
+    digest: 1f23f7be3228c6bdca010922bc837fb8cdd4097c4ab809973277b95782611a79
+    home: https://github.com/twinki14/palworld-server-chart
+    icon: https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg
+    keywords:
+    - palworld
+    - server
+    - kubernetes
+    - helm
+    - game
+    - dedicated-server
+    - game-server
+    maintainers:
+    - email: filipe.souza@mestre8d.com
+      name: Filipe Souza
+      url: https://github.com/Filipe-Souza
+    - name: Twinki14
+      url: https://github.com/Twinki14
+    name: palworld
+    sources:
+    - https://github.com/thijsvanloef/palworld-server-docker
+    - https://github.com/twinki14/palworld-server-chart
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/palworld-0.26.20/palworld-0.26.20.tgz
+    version: 0.26.20
   pgo:
   - apiVersion: v2
     appVersion: 5.4.3
@@ -431,4 +476,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2024-01-14T17:34:10.189960866Z"
+generated: "2024-02-27T21:40:52.763843845Z"
