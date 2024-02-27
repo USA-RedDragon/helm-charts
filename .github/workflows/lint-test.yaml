@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --config ct.yaml
+        run: ct lint --config ct.yaml --check-version-increment=false
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.9.0
@@ -50,7 +50,7 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml --check-version-increment=false --helm-extra-set-args='--set=server.resources=null'
+        run: ct install --config ct.yaml --helm-extra-set-args='--set=server.resources=null'
 
   lint-results:
     if: always()
