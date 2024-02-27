@@ -23,3 +23,4 @@ You can then run `helm search repo usa-reddragon` to see the charts.
 | Chart | Description |
 | ----- | ----------- |
 | [Generic App ](charts/app/) | A Helm chart for a generic Docker app |
+| [Palworld Server <img src='https://cdn.akamai.steamstatic.com/steam/apps/1623730/header.jpg' alt='palworld icon' width='18px' align='right' loading='lazy'>](charts/palworld/) | Official helm chart for the palworld-server-docker docker image, deploys a dedicated PalWorld server to your Kubernetes cluster! |
