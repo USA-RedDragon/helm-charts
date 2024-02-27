@@ -28,6 +28,8 @@ spec:
         {{- toYaml . | nindent 4 }}
         {{- end }}
     spec:
+      securityContext:
+        {{- toYaml .Values.server.securityContext | nindent 8 }}
       containers:
         {{ if .Values.server.service.healthz.enabled }}
         - name: healthz
@@ -61,6 +63,8 @@ spec:
           readinessProbe:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          securityContext:
+            {{- toYaml .Values.server.podSecurityContext | nindent 12 }}
           env:
             {{- if .Values.server.config.rcon.enable }}
             - name: ADMIN_PASSWORD
