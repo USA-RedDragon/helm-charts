@@ -90,10 +90,10 @@ spec:
             - configMapRef:
                 name: "{{ .Release.Name }}-env-config"
           volumeMounts:
-            - mountPath: /palworld
+            - mountPath: /saves
               name: datadir
             {{- if .Values.server.storage.backups }}
-            - mountPath: /palworld/backups
+            - mountPath: /backups
               name: backups
             {{- end }}
             {{- range $index, $element := .Values.server.storage.extra }}
