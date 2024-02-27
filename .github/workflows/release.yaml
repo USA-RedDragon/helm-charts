@@ -85,6 +85,8 @@ jobs:
 
       - name: Install Golang
         uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
 
       - name: Install Helm-docs
         run: go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
