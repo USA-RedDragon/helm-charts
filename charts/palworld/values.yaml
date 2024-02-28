@@ -133,12 +133,7 @@ server:
 
   # Container lifecycle
   terminationGracePeriodSeconds: 30
-  lifecycle:
-    preStop:
-      exec:
-        command:
-          - bash
-          - /usr/local/bin/backup
+  lifecycle: {}
 
   # Liveness and readiness probes
   probes:
@@ -200,8 +195,6 @@ server:
   config:
     annotations: {}
     labels: {}
-    puid: 1000
-    pgid: 1000
     port: 8211
     query_port: 27015
     max_players: 16
@@ -263,3 +256,4 @@ server:
       # When set to false the PalWorldServer.ini will be generated based on environment variables found here https://github.com/thijsvanloef/palworld-server-docker/blob/main/README.md
       #
       DISABLE_GENERATE_SETTINGS: "false"
+      BACKUP_BEFORE_EXIT: "true"
