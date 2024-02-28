@@ -19,5 +19,10 @@ spec:
             - name: kubectl
               image:  bitnami/kubectl
               command:
-              - kubectl -n {{ .Release.Namespace }} rollout restart deployment/{{ .Release.Name }}-server
+              - kubectl
+              - -n
+              - {{ .Release.Namespace }}
+              - rollout
+              - restart
+              - deployment/{{ .Release.Name }}-server
 {{ end }}
