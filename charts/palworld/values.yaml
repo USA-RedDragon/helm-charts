@@ -131,8 +131,10 @@ server:
   #
   strategy: Recreate
 
+  # This will allow users to be warned before the server is shut down
+  # Set this a bit higher than SHUTDOWN_WARN_SECONDS.
+  terminationGracePeriodSeconds: 320
   # Container lifecycle
-  terminationGracePeriodSeconds: 30
   lifecycle: {}
 
   # Liveness and readiness probes
@@ -257,3 +259,4 @@ server:
       #
       DISABLE_GENERATE_SETTINGS: "false"
       BACKUP_BEFORE_EXIT: "true"
+      SHUTDOWN_WARN_SECONDS: "300"
