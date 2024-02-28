@@ -45,3 +45,4 @@ data:
   {{- with .Values.server.config.env }}
   {{- toYaml . | nindent 2  }}
   {{- end }}
+  {{- end }}
