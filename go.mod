@@ -1,3 +1,3 @@
 module github.com/USA-RedDragon/helm-charts
 
-go 1.22.0
+go 1.22.1
