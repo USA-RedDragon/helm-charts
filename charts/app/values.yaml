@@ -68,6 +68,7 @@ env: []
 #       key: SECRET_KEY
 
 podAnnotations: {}
+podLabels: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
