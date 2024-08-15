@@ -3,6 +3,16 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-15T03:23:33.83775939Z"
+    description: A Helm chart for a generic Docker app
+    digest: 14fd1e78248c04387edda04bac10c79f39f188e868845529a0fe0111a271471f
+    name: app
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/app-0.1.32/app-0.1.32.tgz
+    version: 0.1.32
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-14T16:00:44.317673148Z"
     description: A Helm chart for a generic Docker app
     digest: 4d2c905c2062bd3e59efe8c2236ac8c75c6d47d2a5a9f552e0e75f02de37e520
@@ -738,4 +748,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2024-08-14T16:00:44.318032208Z"
+generated: "2024-08-15T03:23:33.838095627Z"
