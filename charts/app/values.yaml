@@ -18,6 +18,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 serviceAccountName:
+runtimeClassName:
 
 secrets: []
 # - name: app-creds
