@@ -34,6 +34,9 @@ spec:
       {{- with .Values.hostname }}
       hostname: {{ . }}
       {{- end }}
+      {{- with .Values.runtimeClassName }}
+      runtimeClassName: {{ . }}
+      {{- end }}
       {{- with .Values.serviceAccountName }}
       serviceAccountName: {{ . }}
       {{- end }}
