@@ -107,7 +107,7 @@ server:
   #
   image:
     repository: ghcr.io/usa-reddragon/palworld-server
-    tag: main@sha256:180913c3df1e18819026c5e6b060fb35cc3dd5e4ec2f5a1c091e473b323349d8
+    tag: main@sha256:5c741a95403058c7d943833a6e8f24be29a289809370f74d729608199bd9f9bd
     imagePullPolicy: IfNotPresent
     imagePullSecrets: []
 
