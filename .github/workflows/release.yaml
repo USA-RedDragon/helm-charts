@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   release:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       packages: write
@@ -76,7 +76,7 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
   docs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -180,7 +180,7 @@ jobs:
           path: docs.tar.gz
 
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [release, docs]
     permissions:
       contents: read
