@@ -32,6 +32,10 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.7.0
 
+      - name: Add Helm repos
+        run: |
+          helm repo add bjw-s https://bjw-s-labs.github.io/helm-charts
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
