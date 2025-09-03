@@ -458,6 +458,21 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/longhorn-1.6.0-dev-20240105/longhorn-1.6.0-dev-20240105.tgz
     version: 1.6.0-dev-20240105
+  mariadb:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-09-03T17:59:06.79471936Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.2.0
+    description: MariaDB using bjw-s common chart
+    digest: 871362258e0d2ecf9033da97f5544f4f0bf5c07e5981186e5916b1fd0ff15a5f
+    name: mariadb
+    type: application
+    urls:
+    - https://github.com/USA-RedDragon/helm-charts/releases/download/mariadb-0.1.0/mariadb-0.1.0.tgz
+    version: 0.1.0
   palworld:
   - apiVersion: v2
     appVersion: v0.26.0
@@ -778,4 +793,4 @@ entries:
     urls:
     - https://github.com/USA-RedDragon/helm-charts/releases/download/pgo-5.4.3/pgo-5.4.3.tgz
     version: 5.4.3
-generated: "2024-12-03T08:35:36.946766145Z"
+generated: "2025-09-03T17:59:06.794828032Z"
