@@ -1,0 +1,152 @@
+controllers:
+  mariadb:
+    # @ignored
+    type: statefulset
+    containers:
+      mariadb:
+        image:
+          # -- MariaDB image repository.
+          repository: mariadb
+          # -- MariaDB image tag.
+          tag: lts
+        env:
+          # -- MariaDB root password file path. Must match secret volume with existing key.
+          MARIADB_ROOT_PASSWORD_FILE: /secret/mariadb-root-password
+          # -- MariaDB password file path. Must match secret volume with existing key.
+          MARIADB_PASSWORD_FILE: /secret/mariadb-password
+          # -- Default database name.
+          MARIADB_DATABASE:
+          # -- Default user name.
+          MARIADB_USER:
+        resources:
+          requests:
+            # -- CPU reservation.
+            cpu: 100m
+            # -- Memory reservation.
+            memory: 256Mi
+            # -- Ephemeral storage reservation.
+            ephemeral-storage: 50Mi
+          limits:
+            # -- Ephemeral storage limit.
+            ephemeral-storage: 2Gi
+        # -- Container security settings.
+        # @default -- See [values.yaml](./values.yaml)
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities: {drop: [ALL]}
+        # -- Container probes.
+        # @default -- See [values.yaml](./values.yaml)
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/scripts/liveness.sh]
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/scripts/readiness.sh]
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [/scripts/liveness.sh]
+              failureThreshold: 30
+              periodSeconds: 5
+    pod:
+      # -- Pod security settings.
+      # @default -- See [values.yaml](./values.yaml)
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        runAsGroup: 999
+        fsGroup: 999
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: {type: RuntimeDefault}
+
+persistence:
+  data:
+    # -- PVC storage class
+    storageClass:
+    # -- PVC access mode.
+    accessMode: ReadWriteOnce
+    # -- PVC size.
+    size: 8Gi
+    # -- Retain PVC when Helm chart is uninstalled.
+    retain: true
+    # @ignored
+    globalMounts:
+      - path: /var/lib/mysql
+  secret:
+    # @ignored
+    type: secret
+    # -- Password secret name.
+    # @default -- Release fullname
+    name: '{{ template "bjw-s.common.lib.chart.names.fullname" . }}'
+  # @ignored
+  tmp:
+    type: emptyDir
+    globalMounts:
+      - path: /tmp
+        subPath: tmp
+      - path: /run/mysqld
+        subPath: run/mysqld
+  # @ignored
+  scripts:
+    type: configMap
+    identifier: scripts
+    defaultMode: 0o550
+
+service:
+  mariadb:
+    # @ignored
+    controller: mariadb
+    ports:
+      mariadb:
+        # -- Service port.
+        port: 3306
+
+networkpolicies:
+  # -- Default policy allows ingress from pods with label `mariadb-client=true` and disallows all egress.
+  # @default -- See [values.yaml](./values.yaml)
+  default:
+    # -- Enable the default network policy.
+    enabled: true
+    # @ignored
+    controller: mariadb
+    # @ignored
+    policyTypes: [Ingress, Egress]
+    # @ignored
+    rules:
+      ingress:
+        - from:
+            - podSelector:
+                matchLabels:
+                  '{{ template "bjw-s.common.lib.chart.names.fullname" . }}-client': "true"
+      egress: []
+
+# @ignored
+configMaps:
+  scripts:
+    data:
+      # language=shell script
+      liveness.sh: |
+        #!/bin/sh
+        password="${MARIADB_ROOT_PASSWORD:-}"
+        if [ -n "${MARIADB_ROOT_PASSWORD_FILE:-}" ]; then
+            password="$(cat "$MARIADB_ROOT_PASSWORD_FILE")"
+        fi
+        exec mariadb-admin status -b -uroot -p"$password"
+      # language=shell script
+      readiness.sh: |
+        #!/bin/sh
+        password="${MARIADB_ROOT_PASSWORD:-}"
+        if [ -n "${MARIADB_ROOT_PASSWORD_FILE:-}" ]; then
+            password="$(cat "$MARIADB_ROOT_PASSWORD_FILE")"
+        fi
+        exec mariadb-admin ping -b -uroot -p"$password"

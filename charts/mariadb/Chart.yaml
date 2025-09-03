@@ -1,0 +1,14 @@
+apiVersion: v2
+name: mariadb
+description: MariaDB using bjw-s common chart
+
+type: application
+
+version: 0.1.0
+
+appVersion: "latest"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 4.2.0
