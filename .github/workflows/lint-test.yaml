@@ -30,7 +30,7 @@ jobs:
           install_only: true
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.7.0
+        uses: helm/chart-testing-action@v2.8.0
 
       - name: Add Helm repos
         run: |
