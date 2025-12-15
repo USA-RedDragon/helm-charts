@@ -33,7 +33,7 @@ spec:
       containers:
         {{ if .Values.server.service.healthz.enabled }}
         - name: healthz
-          image: "chussenot/tiny-server:latest"
+          image: "chussenot/tiny-server:latest@sha256:7d860b9f2aa2c069aff8482bf650f0ed8415368a81cb749b5cf3d844e610e632"
           imagePullPolicy: {{ .Values.server.image.imagePullPolicy }}
           ports:
             - name: healthz
