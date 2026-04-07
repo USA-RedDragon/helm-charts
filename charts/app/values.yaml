@@ -10,7 +10,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0"
+  tag: "alpine@sha256:9c5e088b4dababb9fb4a2523bdddf74fd32c0ed748226ac71094ba599681a33d"
 
 command: []
 args: []
