@@ -100,6 +100,13 @@ persistence:
     type: configMap
     identifier: scripts
     defaultMode: 0o550
+  # @ignored
+  run:
+    type: emptyDir
+    medium: Memory
+    sizeLimit: 1Mi
+    globalMounts:
+      - path: /run/valkey
 
 service:
   valkey:
@@ -148,11 +155,13 @@ configMaps:
       start.sh: |
         #!/bin/sh
         [ -f $VALKEY_PASSWORD_FILE ] && export VALKEY_PASSWORD="$(cat "$VALKEY_PASSWORD_FILE")"
+        umask 077
+        quoted="$(printf '%s' "$VALKEY_PASSWORD" | sed 's/[\\"]/\\&/g')"
+        printf 'include /config/valkey.conf\nrequirepass "%s"\nprimaryauth "%s"\n' "$quoted" "$quoted" > /run/valkey/valkey.conf
+        unset VALKEY_PASSWORD quoted
         exec valkey-server \
-          /config/valkey.conf \
+          /run/valkey/valkey.conf \
           --port "$VALKEY_PORT" \
-          --requirepass "$VALKEY_PASSWORD" \
-          --primaryauth "$VALKEY_PASSWORD" \
           "$@" $VALKEY_EXTRA_FLAGS
       # language=shell script
       ping.sh: |
