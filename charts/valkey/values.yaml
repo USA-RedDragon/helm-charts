@@ -8,7 +8,7 @@ controllers:
           # -- Valkey image repository.
           repository: valkey/valkey
           # -- Valkey image tag.
-          tag: alpine@sha256:1be494495248d53e3558b198a1c704e6b559d5e99fe4c926e14a8ad24d76c6fa
+          tag: alpine@sha256:48332870af354a799964c0012ae1194a0bf2bf894eb508f945810596dc2d8d11
         # @ignored
         command: [/scripts/start.sh]
         env:
