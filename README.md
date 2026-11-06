@@ -23,4 +23,6 @@ You can then run `helm search repo usa-reddragon` to see the charts.
 | Chart | Description |
 | ----- | ----------- |
 | [Generic App ](charts/app/) | A Helm chart for a generic Docker app |
+| [# mariadb ](charts/mariadb/) | MariaDB using bjw-s common chart |
 | [Palworld Server <img src='https://tech.palworldgame.com/img/logo.jpg' alt='palworld icon' width='18px' align='right' loading='lazy'>](charts/palworld/) | Helm chart for the palworld-server Docker image, deploys a dedicated PalWorld server to your Kubernetes cluster! |
+| [# valkey ](charts/valkey/) | Valkey is an open source (BSD) high-performance key/value datastore that supports a variety workloads such as caching, message queues, and can act as a primary database. |
