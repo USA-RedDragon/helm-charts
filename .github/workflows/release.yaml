@@ -27,7 +27,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Install chart-releaser
-        uses: helm/chart-releaser-action@815ca5c8841e9e1f25a68411bf91d99bf012c0c0 # main
+        uses: helm/chart-releaser-action@c5a1c1b527a31d92ad837d7723dd67f0b8b62f15 # main
         with:
           install_only: true
 
@@ -71,7 +71,7 @@ jobs:
           done
 
       - name: Publish charts
-        uses: helm/chart-releaser-action@815ca5c8841e9e1f25a68411bf91d99bf012c0c0 # main
+        uses: helm/chart-releaser-action@c5a1c1b527a31d92ad837d7723dd67f0b8b62f15 # main
         if: steps.changed.outputs.charts != ''
         with:
           skip_packaging: true
