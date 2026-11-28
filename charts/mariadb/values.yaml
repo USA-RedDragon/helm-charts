@@ -8,7 +8,7 @@ controllers:
           # -- MariaDB image repository.
           repository: mariadb
           # -- MariaDB image tag.
-          tag: lts@sha256:1cac8492bd78b1ec693238dc600be173397efd7b55eabc725abc281dc855b482
+          tag: lts@sha256:7a6c5d2070f93bb2b233ca818e46dc5ae2f25dd655f794e5216e36dba2d114a3
         env:
           # -- MariaDB root password file path. Must match secret volume with existing key.
           MARIADB_ROOT_PASSWORD_FILE: /secret/mariadb-root-password
